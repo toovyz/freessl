@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TASK 3</title>
+  <meta name="keywords" content="Linux Commands">
+  <meta name="author" content="TooVy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<style> 
+  @media only screen and (max-width: 720px) {
+    body {
+      margin: 0px 10% 300px 10%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      margin: 0px 10px 300px 10px;
+    }
+  }
+</style>
+</head>
+<boby>
+  <div class="topnav">
+    <a href="./../about.html">About</a>
+    <a href="./../blog.html">Blog</a>
+    <a href="./../index.html">Home</a>
+  </div>
+<div class="header">
+    <h1>Basic Linux Commands</h1>
+</div>
+<h3>pwd</h3>
+<p>Dùng pwd để xem đường dẫn của thư mục hiện tại. Lệnh sẽ trả về một đường dẫn của tất cả thư mục.</p>
+<h3>cd</h3>
+<p>Dùng để điều hướng qua các tệp và thư mục.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+- Giả sử bạn đang ở /home/username/Documents, và bạn muốn đến Photos trong Documents, gõ: <span>cd Photos</span>.
+- Trường hợp khác, bạn muốn chuyển đến thư mục hoàn toàn mới: /home/username/Movies, bạn phải gõ toàn bộ đường dẫn đó: <span>cd /home/username/Movies</span>.
+</pre>
+<p>Một số shortcut:</p>
+<li>cd .. : Chuyển thư mục lên trên.</li><li>cd : Đi thẳng đến thư mục home.</li><li>cd- : Di chuyển đến thư mục phía trước.</li>
+<h3>ls</h3>
+<p>Lệnh ls được dùng để xem nội dung của thư mục hiện tại của bạn.</p>
+<p class=ex>Ví dụ</p>
+<pre>Bạn muốn xem nội dung của Documents, nhập ls/đường dẫn đến Documents: <span>ls /home/username/Documents</span>.</pre>
+<p>Các lệnh biến thể của ls:</p>
+<li>ls -R : Liệt kê tất cả các tệp trong thư mục con.</li><li>ls -a : Hiển thị các tệp bị ẩn.</li><li>ls -al : Liệt kê các tệp và thư mục với thông tin chi tiết như kích thước, quyền,… .</li>
+<h3>cat</h3>
+<p>cat (concatenate) dùng để liệt kê nội dụng của một tệp. Để chạy lệnh này, nhập cat, theo sau là tên tệp và phần mở rộng của tệp.</p>
+<p class=ex>Ví dụ</p>
+<pre>Để mở file đuôi txt nhập: <span>cat file.txt</span>.</pre>
+<p>Một số cách khác sử dụng lệnh cat:</p>
+<li>cat > filename : Tạo một file mới.</li><li>cat file1 file2>file3 : Nối file1 cùng file2 và lưu trữ đầu ra của chúng trong file3.</li>
+<h3>cp</h3>
+<p>Dùng để copy file từ thư mục hiện tại sang một thư mục khác.</p>
+<p class=ex>Ví dụ</p>
+<pre>Bạn muốn di chuyển wol.jpg ở thư mục hiện tại đến /home/username/Pictures, gõ:<span> cp wol.jpg /home/username/Pictures</span>.</pre>
+<h3>mv</h3>
+<p>Dùng để di chuyển file tương tự với cú pháp lệnh cp, ngoài ra lệnh mv còn để đổi tên file.</p>
+<p class=ex>Ví dụ</p>
+<pre>Để đổi tên file, gõ: <span>mv oldname.txt newname.txt</span>.</pre>
+<h3>mkdir</h3>
+<p>Lệnh mkdir dùng để tạo thư mục mới.</p>
+<p class=ex>Ví dụ</p>
+<pre>Tạo thư mục mới tên Music: <span>mkdir Music</span>.</pre>
+<p>Các lệnh bổ sung:</p>
+<li>mkdir directory/newfile : Tạo newfile bên trong directory.</li><li>mkdir -p : Tạo một thư mục mới giữa hai thư mục.</li>
+<h3>rmdir</h3>
+<p>Xóa thư mục trống.</p>
+<h3>rm</h3>
+<p>Dùng để xóa thư mục và nội dung bên trong.<br>Hãy cẩn thận khi dùng lệnh này vì nó sẽ xóa tất cả và không thể hoàn tác.</p>
+<h3>touch</h3>
+<p>Lệnh touch cho phép tạo một tệp trống.</p>
+<p class=ex>Ví dụ</p>
+<pre>Tạo một file.html trong thư mục Documents, nhập lệnh như sau: <span>touch /home/username/Documents/file.html</span>.</pre>
+<h3>locate</h3>
+<p>Giống như lệnh tìm kiếm trong Windows, lệnh này dùng để định vị một file.</p>
+<li>locate -i : Tìm kiếm file bất kể chữ hoa hay chữ thường.</li><li>locate word1*word2 : Khi tìm kiếm từ một file có chứa từ hai từ trở lên, dùng *, nó sẽ tìm kiếm bất kể file nào có từ word1 và word2.</li>
+<h3>find</h3>
+<p>Tương tự như locate, find sử dụng để tìm kiếm các tệp và thư mục. Điểm khác nhau là bạn sử dụng file để tìm kiếm trong một thư mục nhất định. Ngoài ra, find . -name dùng để tìm file trong thư mục hiện tại.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+- Lệnh <span>find /home/ -name Notes.txt</span> sẽ tìm kiếm tệp có tên Note.txt trong home và các thư mục con của home.
+- Tìm file Note.txt trong Documents: <span>find . /home/username/Documents -name Note.txt</span>.
+</pre>
+<h3>grep</h3>
+<p>Lệnh grep sẽ tìm kiếm trong văn bản trong một file nhất định. Các dòng có chứa nội dung tìm kiếm sẽ được hiển thị đầy đủ.</p>
+<p class=ex>Ví dụ</p>
+<pre>Tìm kiếm từ fox trong tệp animals.txt, gõ: <span>grep fox animals.txt.</span></pre>
+<h3>sudo</h3>
+<p>Là viết tắt của “SuperUser Do”, lệnh này cho phép bạn thực hiện các tác vụ yêu cầu quyền quản trị hoặc quyền root. Tuy nhiên, nó sẽ xảy ra lỗi nếu bạn làm gì đó sai.</p>
+<h3>df</h3>
+<p>Sử dụng df để nhận báo cáo về dụng lượng được sử dụng ổ đĩa hệ thống, nó sẽ được hiển thị bằng phần trăm và KB, nếu muốn xem bằng MB, nhập df -m.</p>
+<h3>du</h3>
+<p>du (Disk Usage) để xem một tệp hoặc một thư mục chiếm bao nhiêu dung lượng. Nếu bạn muốn xem nó ở byte, kilobyte, và megabyte, thêm -h vào dòng lệnh.</p>
+<h3>head</h3>
+<p>Lệnh này được dùng xem các dòng đầu tiên của văn bản. Mặc định nó sẽ hiển thị 10 dòng đầu nhưng bạn có thể thay đổi chúng.</p>
+<p class=ex>Ví dụ</p>
+<pre>Bạn chỉ muốn xem năm dòng đầu, nhập: <span>head -n 5 filename.txt</span>.</pre>
+<h3>tail</h3>
+<p>Tương tự như head, tail dùng để hiển thị các dòng cuối của văn bản.</p>
+<h3>diff</h3>
+<p>Dùng để tìm ra nội dung các nhau giữa hai tệp văn bản theo từng dòng.</p>
+<p class=ex>Ví dụ</p>
+<pre><span>diff file1.txt file2.txt</span></pre>
+<h3>tar</h3>
+<p>Lệnh tar là lệnh được sử dụng nhiều nhất để lưu trữ nhiều tệp vào một tarball – một định dạng tệp Linux phổ biến tương tự như định dạng zip, với định dạng nén là tùy chọn.</p>
+<h3>chmod</h3>
+<p>Trong hệ điều hành Linux, chmod là lệnh được sử dụng để thay đổi quyền truy cập của người dùng tới file/folder.
+Đây là lệnh khá phức tạp khi sử dụng.</p>
+<h3>chown</h3>
+<p>Lệnh chown cho phép bạn thay đổi hoặc chuyển quyền sở hữu tệp sang người dùng khác.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+<span>chown linuxuser2 file.ext</span> đặt linuxuser2 làm chủ sở hữu của file.ext.
+</pre>
+<h3>kill</h3>
+<p>Dùng để kết thúc một chương trình theo cách thủ công nếu chương trình đó hoạt động không đúng. Nó sẽ gửi một tín hiệu nhất định đến ứng dụng đó và hướng dẫn ứng dụng tự kết thúc.</p>
+<h3>ping</h3>
+<p>Sử dụng lệnh ping để kiểm tra trạng thái kết nối của bạn với máy chủ.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+Kiểm tra xem bạn có kết nối được với google hay không, nhập: <span>ping google.com</span>.
+</pre>
+<h3>wget</h3>
+<p>Gõ wget kèm theo download link để tại xuống các tệp từ internet.</p>
+<h3>uname</h3>
+<p>In thông tin chi tiết về hệ thống Linux của bạn như tên máy, hệ điều hành, hạt nhân, …</p>
+<h3>history</h3>
+<p>Lệnh này được sử dụng để hiển thị các lệnh đã sử dụng trước đó hoặc để lấy thông tin về các lệnh được thực thi bởi người dùng</p>
+<h3>passwd</h3>
+<p>Lệnh này được sử dụng để thay đổi mật khẩu tài khoản người dùng. Bạn có thể thay đổi mật khẩu của mình hoặc mật khẩu của những người dùng khác.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+Thay đổi mật khẩu cho user: <span>passwd username</span>.
+</pre>
+<h3>echo</h3>
+<p>Lệnh này được sử dụng để di chuyển một số dữ liệu vào một tệp.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+Thêm "Hi" vào name.txt, nhập: <span>echo hi >> name.txt</span>.
+</pre>
+<h3>man</h3>
+<p>Lệnh này được sử dụng để xem các trang hướng dẫn tham khảo trực tuyến cho các lệnh / chương trình.</p>
+<p class=ex>Ví dụ</p>
+<pre>
+<span>
+man grep
+man mkdir
+</span>
+</pre>
+<h3>Tips and Tricks</h3>
+<li>Dùng clear để dọn dẹp terminal.</li>
+<li>Dùng tab để tự động điền.</li>
+<li>Ctrl+C để chấm dứt lệnh đang hoạt động, Ctrl+Z để tạm dừng.</li>
+<li>Ctrl+A di chuyển đến đầu dòng, Ctrl+E di chuyển đến cuối.</li>
+<li>Để chạy nhiều lệnh trong một lệnh: Dùng dấu “;” để tách chúng, dùng && nếu bạn muốn lệnh tiếp theo chạy khi lệnh trước thành công..</li>
+<p class="end">'Thanks for reading !!'</p>
+</boby>

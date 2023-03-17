@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TASK 2</title>
+  <meta name="keywords" content="Proxy Server">
+  <meta name="author" content="TooVy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<style> 
+  @media only screen and (max-width: 720px) {
+    body {
+      margin: 0px 10% 300px 10%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      margin: 0px 10px 300px 10px;
+    }
+  }
+</style>
+</head>
+<boby>
+  <div class="topnav">
+    <a href="./../about.html">About</a>
+    <a href="./../blog.html">Blog</a>
+    <a href="./../index.html">Home</a>
+  </div>
+<div class="header">
+    <h1>Proxy Server</h1>
+</div>
+<p>Proxy server là một server trung gian giữa client và server. Nó cung cấp các mức chức năng, bảo mật và quyền riêng tư tùy thuộc vào nhu cầu người dùng.<br>
+Khi dùng proxy server, request sẽ chuyển đến proxy server trước khi đến web server. Sau đó, web server gửi lại một response tương ứng đến proxy server, proxy server sẽ chuyển tiếp dữ liệu nhận được cho client browser.</p>
+<h2>Operation</h2>
+<p>Mỗi thiết bị kết nối mạng đều có một địa chỉ IP riêng. Địa chỉ IP được xem là địa chỉ để xác định danh tính của các thiết bị khi giao tiếp qua internet.</p>
+<p>Proxy server cơ bản là một máy tính có địa chỉ IP riêng. Khi client gửi một request đến web server, request này sẽ đến proxy server trước tiên. Proxy server sẽ thay client gửi request, thu thập response và gửi lại chúng về client browser.</p>
+<p>Trong quá trình chuyển tiếp dữ liệu, proxy server có thể thay đổi dữ liệu gửi đi nhưng vẫn giữ lại thông tin mà client cần. Proxy server có thể thay đổi địa chỉ IP, vì thế, web server sẽ không thể xác định được danh tính client. Proxy server có thể mã hóa dữ liệu của bạn khi chuyển tiếp. Proxy server cũng có thể chặn truy cập đến những trang web nhất định dựa vào địa chỉ IP.</p>
+<h2>Benefit</h2>
+<li>Kiếm soát việc dùng internet: Thiết lập một proxy server để chặn hoặc chuyển hướng một số trang web nhất định, giám sát lịch sử duyệt web.</li><li>Tiết kiệm băng thông và tăng tốc độ truy cập: Proxy server có thể lưu vào bộ nhớ cache những trang web phổ biến. Khi truy cập vào một trang web, proxy server sẽ kiểm tra lại xem có bản copy hay không và gửi cho client. Điều này có nghĩa là nếu hàng trăm user truy cập vào một trang web nào đó, proxy server sẽ chỉ gửi một request đến trang web đó.</li><li>Riêng tư: Vài proxy server sẽ thay đổi địa chỉ IP và một vài thông tin khác chứa trong web request. </li><li>Bảo mật: Proxy server mã hóa web request, chặn các trang web có mã độc.</li><li>Truy cập vào các nguồn tài nguyên bị hạn chế.</li>
+<p class="end">'Thanks for reading !!'</p>
+</boby>

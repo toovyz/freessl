@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Large integer</title>
+  <meta name="keywords" content="HTTP Protocol">
+  <meta name="author" content="TooVy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<style> 
+  @media only screen and (max-width: 720px) {
+    body {
+      margin: 0px 10% 300px 10%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      margin: 0px 10px 300px 10px;
+    }
+  }
+</style>
+</head>
+<boby>
+  <div class="topnav">
+    <a href="./../about.html">About</a>
+    <a href="./../blog.html">Blog</a>
+    <a href="./../index.html">Home</a>
+  </div>
+<div class="header">
+    <h1>Arithmetic with large integers</h1>
+</div>
+<p>Large numbers là những số lớn hơn bình thường hoặc là những số lớn hơn số khác.</p>
+<p>Trong mỗi ngôn ngữ lập trình, có những kiểu dữ liệu lưu trữ các số, nhưng các số không chỉ dừng lại ở mức lưu trữ của kiểu dữ liệu đó. Vì thế, cần xây dựng thuật toán để có thể tính toán trên các số lớn.</p>
+<h2>1. Biểu diễn số nguyên lớn</h2>
+<p>Số nguyên lớn có thể biểu diễn bằng chuỗi <code>string</code> hoặc mảng <code>array</code>, ở bài này mình chỉ biểu diễn bằng chuỗi kí tự.</p>
+<h2>2. Các phép toán</h2>
+<p>Mình sẽ trình bày các phép toán cộng, trừ, nhân, chia bằng python3.</p>
+<li>Input: Hai số nguyên lớn <code>s1</code> và <code>s2</code>.</li>
+<li>Output: Kết quả <code>result</code> của phép toán.</li>
+<h3>Phép cộng (Addition)</h3>
+<p>Mình sẽ cộng từng phần tử của chuỗi số theo chiều từ trái qua phải, đến hết chuỗi ngắn hơn, chia kết quả vừa cộng cho <code>10</code>, lấy phần dư thêm vào <code>result</code>, nhớ phần nguyên. Tiếp tục cộng biến nhớ vào chuỗi dài hơn đến hết chuỗi và thêm biến nhớ cuối cùng vào <code>result</code>.</p>
+<p>Để chắc chắn rằng <code>s1</code> phải luôn ngắn hơn hoặc bằng <code>s2</code>:</p>
+<pre>
+    if len(num1) > len(num2):
+        swap = num1;
+        num1 = num2;
+        num2 = swap;
+</pre>
+<p>Sau đó đảo ngược chuỗi để tính toán. Với từng phần tử thứ <code>i</code> trong <code>s1</code> ta cộng với phần tử thứ <code>i</code> trong <code>s2</code>, lấy phần dư, nhớ phần nguyên.</p>
+<pre>
+	for i in range(len(num1)):
+		s = int(num1[i]) + int(num2[i]) + carry;
+		result += str(s % 10);
+		carry = s // 10;
+</pre>
+<p>Tiếp tục cộng thêm biến nhớ vào <code>s2</code>.</p>
+<pre>
+	for i in range(len(num1), len(num2)):
+		s = int(num2[i]) + carry;
+		result += str(s % 10);
+		carry = s // 10;
+</pre>
+<p>Cuối cùng, nếu biến nhớ khác <code>0</code>, cộng tiếp tục vào <code>result</code>, đảo ngược kết quả và <code>return</code>.</p>
+<pre>
+	if (carry):
+		result += str(carry);
+	result = result[::-1];
+	return result;
+</pre>
+<h3>Phép trừ (Subtraction)</h3>
+<p>Cũng như phép cộng trên, đầu tiên phải chắc chắn rằng <code>s1</code> phải ngắn hơn, ngoài ra còn phải bé hơn <code>s2</code>.</p>
+<pre>
+	if len(num1) > len(num2):
+		swap = num1;
+		num1 = num2;
+		num2 = swap;
+	elif len(num1) == len(num2):
+		for i in range(len(num1)):
+			if num1[i] != num2[i]:
+				if int(num1[i]) > int(num2[i]):
+					swap = num1;
+					num1 = num2;
+					num2 = swap;
+					break;
+				break;
+</pre>
+<p>Trừ số thứ <code>i</code> của <code>s2</code> cho <code>s1</code>, chia cho 10, lấy phần dư và và phần nguyên sẽ bằng <code>1</code> nếu kết quả trừ nhỏ hơn <code>0</code>. Hết chuỗi <code>s1</code>, tiếp tục trừ <code>s2</code> với biến nhớ.</p>
+<pre>
+    for i in range(len(num1)):
+		s = int(num2[i]) - (int(num1[i]) + carry);
+		result += str(s % 10);
+		if s < 0:
+			carry = 1;
+		else: carry = 0;
+
+	for i in range(len(num1), len(num2)):
+		s = int(num2[i]) - carry;
+		result += str(s % 10);
+		if s < 0:
+			carry = 1;
+		else: carry = 0;
+</pre>
+<p>Sau đó đảo ngược chuỗi và trả về <code>result</code>.</p>
+<h3>Phép nhân (Multiplication)</h3>
+<p>Ý tưởng của bài này mình thấy khá hay, cũng là phép nhân thông thường, mình sẽ nhân từng số của <code>s1</code> với <code>s2</code> và cộng các số có tổng chỉ số bằng nhau.</p>
+<p>Khác với phép cộng trừ, khi mới vào mình sẽ xác định xem có số âm trong hai số không. Nếu có, bỏ qua dấu <code>-</code> và tính toán như bình thường, sau đấy thêm vào kết quả.</p>
+<pre>
+	if num1[0] == "-" and num2[0] == "-":
+		num1 = num1[1:];
+		num2 = num2[1:];
+	elif num1[0] == "-" and num2[0] != "-":
+		num1 = num1[1:];
+		ss = 1;
+	elif num1[0] != "-" and num2[0] == "-":
+		num2 = num2[1:];
+		ss = 1;
+</pre>
+<p>Tương tự, mình sẽ đảo ngược chuỗi để tiện tính toán từ phải sang, và khai báo một <code>array</code> với độ dài bằng tích độ dài của <code>s1</code> và <code>s2</code>.</p>
+<pre>
+	num1 = num1[::-1];
+	num2 = num2[::-1];
+	sum = [0] * (len(num1) * len(num2));
+</pre>
+<p>Nhân <code>s1</code> với <code>s2</code> và các số có tổng chỉ số của hai số nhân bằng nhau:</p>
+<pre>
+	for i in range(len(num1)):
+		for j in range(len(num2)):
+			sum[i+j] = sum[i+j] + (int(num1[i]) * int(num2[j]));
+</pre>
+<p>Để dễ hiểu nhất thì mọi người có thể demo lại bằng tay.</p>
+<p>Từ kết quả nhận được, chia 10 lấy phần dư cho vào <code>result</code> và phần nguyên cho biến nhớ.</p>
+<pre>
+	for i in range(len(sum)):
+		result += str(sum[i] % 10);
+		carry = sum[i] // 10;
+		if (i+1) < len(sum):
+			sum[i+1] = sum[i+1] + carry;
+</pre>
+<p>Sau đó xử lí <code>carry</code> cuối như hai phép cộng, trừ và đảo chuỗi, trả về <code>result</code>.</p>
+<h3>Phép chia (Division)</h3>
+<p>Ở phép chia, mình chỉ có khả năng chia một số lớn cho một số nguyên có thể lưu trữ được.</p>
+<p>Khá đơn giản, bước đầu mình lấy từng số trong chuỗi số bị chia nhân <code>10</code> và cộng cho số tiếp theo và lưu vào một biến <code>d</code>, tiếp tục đến khi nào số nhận được có thể chia cho số chia. Ở những bước tiếp theo, mình lặp lại việc chia biến <code>d</code> cho <code>10</code>, phần nguyên thêm vào <code>result</code>, phần dư nhân <code>10</code> và cộng với số tiếp theo cho đến khi hết chuỗi số bị chia.</p>
+<pre>
+	while d < int(num1):
+		d = (d * 10) + int(num2[i]);
+		i += 1;
+
+	while i < len(num2):
+		result += str(d // int(num1));
+		d = (d % int(num1)) * 10 + int(num2[i]);
+		i += 1;
+</pre>
+<p>Cuối cùng lấy phần nguyên của <code>d</code>, và kết thúc thuật toán, không phải đảo ngược số như những phép toán trên.</p>
+<p>Về phần source code mình để <a class=a  href="https://drive.google.com/file/d/1aQaDB05rJTPOzbr34oSVM7mQ_C9G4Xpt/view?usp=share_link">ở đây nhe</a>.</p>
+<p class="end">'Thanks for reading !!'</p>
+</boby>

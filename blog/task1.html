@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTTP Protocol</title>
+  <meta name="keywords" content="HTTP Protocol">
+  <meta name="author" content="TooVy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/style.css">
+<style> 
+  @media only screen and (max-width: 720px) {
+    body {
+      margin: 0px 10% 300px 10%;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    body {
+      margin: 0px 10px 300px 10px;
+    }
+  }
+</style>
+</head>
+<boby>
+  <div class="topnav">
+    <a href="./../about.html">About</a>
+    <a href="./../blog.html">Blog</a>
+    <a href="./../index.html">Home</a>
+  </div>
+<div class="header">
+    <h1>The HTTP Protocol</h1>
+</div>
+<p>Instructor giao cho mình nhiệm vụ đầu tiên là tìm hiểu về “The HTTP Protocol” như sau:</p>
+<li>HTTP Requests</li>
+<li>HTTP Responses</li>
+<li>HTTP Methods</li>
+<li>URLs</li>
+<li>HTTP Headers</li>
+<li>Cookies</li>
+<li>Status Codes</li>
+<li>HTTPS</li>
+<li>HTTP Proxies</li>
+<p>Đầu tiên, HTTP (Hypertext transfer protocol - Giao thức truyền tải siêu văn bản) là giao thức truyền thông cốt lõi được dùng để truy cập World Wide Web và được sử dụng bởi toàn bộ các web app ngày nay. Ban đầu nó chỉ là giao thức đơn giản để truy xuất ra văn bản tĩnh dựa trên tài nguyên. Ngày nay, HTTP đã được mở rộng và tận dụng theo nhiều cách khác nhau cho phép nó hỗ trợ các ứng dụng phân tán phức tạp phổ biến.<br>
+HTTP sử dụng “message-based model” trong đó client yêu cầu một thông tin nào đó và server sẽ phản hồi lại thông tin đó. Về cơ bản giao thức HTTP là connectionless.
+</p>
+<h2>1. HTTP Requests</h2>
+<p>Requests gồm một hoặc vài header trên mỗi dòng riêng biệt, một dòng trống phân cách header và body, sau đó là phần body chứa thông tin.</p>
+<p><em>Ví dụ:</em>Đây là một HTTP Request:</p>
+<pre style="text-indent: 0px">
+GET /auth/488/YourDetails.ashx?uid=129 HTTP/1.1
+Accept: application/x-ms-application, image/jpeg, application/xaml+xml, image/gif, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, */*
+Referer: https://mdsec.net/auth/488/Home.ashx
+Accept-Language: en-GB
+User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64;
+Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; InfoPath.3; .NET4.0E; FDM; .NET CLR 1.1.4322)
+Accept-Encoding: gzip, deflate
+Host: mdsec.net
+Connection: Keep-Alive
+Cookie: SessionId=5B70C71F3FD4968935CDB6682E545476    
+</pre>
+<p>Dòng đầu tiên có ba điểm cần lưu ý:</p>
+<li>Từ chỉ phương thức (HTTP method) - GET, POST, HEAD, CONNECT… .</li>
+<li>URL được yêu cầu.</li>
+<li>Phiên bản HTTP được sử dụng - 1.1 hoặc 1.0.</li>
+<p>Một vài điểm khác:</p>
+<li>Referer header.</li>
+<li>User-Agrent.</li>
+<li>Host.</li>
+<li>Cookie.</li>
+<h2>2. HTTP Response</h2>
+<p><em>Ví dụ:</em>Đây là một HTTP Reponse:</p>
+<pre style="text-indent: 0px">
+HTTP/1.1 200 OK
+Date: Tue, 19 Apr 2011 09:23:32 GMT
+Server: Microsoft-IIS/6.0
+X-Powered-By: ASP.NET
+Set-Cookie: tracking=tI8rk7joMx44S2Uu85nSWc
+X-AspNet-Version: 2.0.50727
+Cache-Control: no-cache
+Pragma: no-cache
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 1067  
+ 
+  ...
+</pre>
+<p>Tương tự như HTTP Request, dòng đầu của HTTP Response có ba điểm cần lưu ý:</p>
+<li>Phiên bản HTTP được sử dụng.</li>
+<li>Một số (status code) cho biết kết quả của Request.</li>
+<li>Một cụm từ mô tả trạng thái của response.
+</li>
+<p>Một vài điểm khác:</p>
+<li>Server.</li>
+<li>Set-Cookie.</li>
+<li>Pragma, Expires.</li>
+<li>Content-Type.</li>
+<li>Content-Length.</li>
+<h2>3. HTTP Methods</h2>
+<p>HTTP Request Method chỉ phương thức để thực hiện trên nguồn được nhận diện bởi Request URl đã cung cấp.</p>
+<p>Có nhiều phương thức được dùng cho nhiều mục đích khác nhau. Trong đó, GET và POST được sử dụng nhiều nhất, đồng thời là 2 phương thức quan trọng nhất.</p>
+<li>GET: để truy xuất tài nguyên. Nó dùng để gửi các thông số đến nguồn yêu cầu thông qua chuỗi URL. Điều này cho phép user đánh dấu tài nguyên mà họ sẽ sử dụng lại, hoặc user khác có thể truy xuất tài nguyên đó vào lúc khác. URL sẽ được hiển thị nhiều nơi trên màn hình, lịch sử trình duyệt, nhật kí truy cập web server. Chúng cũng được truyền qua referer header khi một khác truy cập link. Vì những lí do trên, không nên dùng GET method khi truyền tải những thông tin nhạy cảm.</li>
+<li>POST: nhìn chung, phương thức này ngược lại với GET. Nó dùng để gửi thông tin đến server thông qua cả truy vấn URL và phần body. Mặc dù URL vẫn được đánh dấu, nhưng những thông số truyền đi sẽ bị ẩn. Bên cạnh đó, nó còn bị ẩn khỏi những nơi lưu trữ URL và ở referer header. Vì thế, sẽ rát hợp lí nếu dùng POST method khi thực hiện hành động trên web app.</li>
+<p>Ngoài ra, còn một số phương thức khác đáng chú ý:</p>
+<li>HEAD: Hoạt động giống như GET, server sẽ phản hồi phần header nhưng không trả về phần body.</li>
+<li>TRACE: Server sẽ trả về phần nội dung chính xác của yêu cầu mà nó nhận trong body response. Điều này sử dụng để phát hiện proxy server giữa client và server thao túng request.</li>
+<li>OPTION: Yêu cầu server báo cáo các HTTP method có sẵn cho tài nguyên cụ thể.</li>
+<li>PUT: Tải lên server các tài nguyên chỉ định bằng nội dụng chứ trong phần body của request.</li>
+<h2>4. URLs</h2>
+<p>URL (Uniform Resource Locator) được gọi theo cách thông thường là địa chỉ web, là bộ định danh duy nhất mà qua đó tài nguyên được truy xuất. Cấu trúc URL:</p>
+<pre>protocol://hostname[:port]/[path/]file[?param=value]</pre>
+<p>Ngoài ra, thuật ngữ URI (Uniform Resource Identifier) có thể được sử dụng thay URL, nhưng nó dùng chỉ tài nguyên đó chứ không chỉ ra nơi nó lưu trữ.</p>
+<h2>5. HTTP Headers</h2>
+<p>HTTP hỗ trợ số lượng lớn các header, nhiều header được thế kế cho nhiều mục đích riêng. Có những header chỉ dùng cho request hoặc response, cũng có những header dùng cho cả hai.</p>
+<p class="center">General Headers</p>
+<li>Connection: Cho phía còn lại biết là có phải ngắt kết nối TCP khi truyền tải HTTP hoàn tất hay không.</li>
+<li>Content-Encoding: Chỉ loại mã hóa nào đang được sử dụng.</li>
+<li>Content-Length: Chỉ độ dài phần body thư.</li>
+<li>Content-Types: Chỉ loại nội dung dùng trong phần body (text, html…).</li>
+<li>Transfer-Encoding: Chỉ bất kì loại mã hóa nào dùng trong phần body thư thuận lợi cho việc truyền dữ liệu qua HTTP.</li>
+<p class="center">Request Headers</p>
+<li>Accept: Cho server cho biết loại nội dung mà client chấp nhận (hình ảnh, tài liệu…).</li><li>Accept-Encoding: Cho server cho biết loại mã hóa mà client chấp nhận.</li><li>Authorization: Truyền đi thông tin đăng nhập.</li><li>Cookie: Xác nhận cookie mà server đã cấp.</li><li>Host: Chỉ định tên máy chủ xuất hiện trong URL yêu cầu.</li><li>If-Modified-Since: Chỉ định lần cuối trình duyệt nhận được tài nguyên được yêu cầu.</li><li>If-None-Match: Trường này yêu cầu Server trình bày method được yêu cầu chỉ khi một trong số giá trị đã cho của thẻ này kết nối với các thẻ đối tượng đã được cung cấp biểu diễn bởi entity tag.</li><li>Origin: Được dùng trong cross-domain Ajax request để chỉ miền mà request bắt nguồn từ đó.</li><li>Referer: Cho phép Client xác định địa chỉ URI của nguồn mà từ đó URL đã được yêu cầu.&nbsp;</li><li>User-Agent: Cung cấp thông tin về trình duyệt hoặc phần mềm mà client tạo ra request.</li>
+<p class="center">Response Headers</p>
+<li>Access-Control-Allow-Origin: Cho biết tài nguyên có được truy xuất từ cross-domain Ajax requests hay không.</li><li>Cache-Control: Xác định những chỉ dẫn phải được tuân theo bởi hệ thống bộ nhớ ẩn.</li><li>Etag: Chỉ entity tag, cung cấp giá trị hiện tại của thể đối tượng cho biến thể được yêu cầu.</li><li>Expires: Cho trình duyệt biết thông tin sẽ có giá trị trong bao lâu. </li><li>Location: Điều hướng client đến vị trí khác ngoài Request-URI.</li><li>Pragma: Bao gồm các chỉ dẫn cụ thể mà có thể áp dụng tới endpoint bất kì.</li><li>Server: Cung cấp thông tin về web server.</li><li>Set-Cookie: Cấp cookie cho trình duyệt mà nó sẽ gửi lại server trong các request sau.</li><li>WWW-Authenticate: Dùng trong các response có mã 401 để cung cấp chi tiết về một hoặc nhiều loại xác thực mà server hỗ trợ.</li><li>X-Frame-Options: Cho biết phản hồi hiện tại có thể được tải bằng trình duyệt hay không và bằng cách nào.</li>
+<h2>6. Cookies</h2>
+<p>Cookie là một phần của gia thức HTTP mà hầu hết các web dựa vào. Cookie là một đoạn văn bản mà một Web server có thể lưu trên ổ cứng của người dùng. Cơ chế cookie cho phép server gửi dữ liệu đến client, client lưu trữ dữ liệu đó và gửi đến server vào mỗi lần truy cập.  Cookie được dùng với mục đích phổ biến là để lưu trữ phiên đăng nhập nhằm phục vụ cho mục đích xác thực với website, duy trì trạng thái đăng nhập, ghi nhớ thông tin trạng thái, ghi nhớ hoạt động người dùng thực hiện trong quá trình truy cập và duyệt một trang web, cookie cũng được dùng để lưu lại các thông tin khác mà người dùng nhập hay điền vào trang web.</p>
+<p>Server đưa ra một cookie sử dụng Set-Cookie response header:</p>
+<pre>Set-Cookie: tracking=tI8rk7joMx44S2Uu85nSWc</pre>
+<p>User sẽ tự động lưu cookie lại bằng Cookie request header:</p>
+<pre>Cookie: tracking=tI8rk7joMx44S2Uu85nSWc</pre>
+<h2>7. Status Codes</h2>
+<p>Mỗi HTTP response phải chứ một status code trong dòng đầu tiên, cho biết kết quả của request. Status code chi làm năm nhóm theo chứ số đầu tiên:</p>
+<li>1xx - Thông tin</li><li>2xx - Request gửi đi thành công.</li><li>3xx - Client chuyển hướng đến một tài nguyên khác.</li><li>4xx - Lỗi request ở client.</li><li>5xx - Lỗi ở server</li>
+<p>Có rất nhiều Status code cụ thể, sau đây là một số status code thường gặp: 100 OK, 200 OK, 201 Created, 301 Moved Permanently, 302 Found, 304 Not Modified, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 405 Method Not Allowed, 413 Request Entity Too Large, 414 Request URI Too Long, 500 Internal Server Error, 503 Service Unavailble.</p>
+<h2>8. HTTPS</h2>
+<p>Hypertext Transfer Protocol Secure (HTTPS) là phần mở rộng của HTTP. Trong HTTPS, giao thức truyền thông được mã hóa bằng TLS (Transport Layer Security), hay trước đây là SSL (Secure Sockets Layer). Điều này bảo vệ quyền riêng tư và tính toàn vẹn của dữ liệu truyền qua mạng, giảm khả năng xảy ra các cuộc tấn công đánh chặn không xâm phạm. HTTP request và HTTP response hoạt động theo cùng một cách bất kể SSL có được sử dụng để truyền tải hay không.</p>
+<h2>9. HTTP Proxies</h2>
+<p>HTTP proxy là một server trung gian giữa client và web server. Khi một trình duyệt sử dụng kết nối qua proxy, nó sẽ gửi request đến proxy, proxy sẽ chuyển tiếp request đến server và gửi lại response đến client. Hầu hết các proxy cũng cung cấp các dịch vụ bổ sung, bao gồm bộ nhớ đệm, xác thực và kiểm soát truy cập.<br>Proxy ngăn chặn sự xâm nhập, ẩn hoặc thay đổi IP, lưu trữ thông tin client…</p>
+<p class="end">'Thanks for reading !!'</p>
+</boby>

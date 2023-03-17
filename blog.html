@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BLOG</title>
+  <meta name="author" content="TooVy">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+.column {
+  float: left;
+  width: 45%;
+  padding: 15px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+body{
+    margin: 100px;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: #000;
+}
+</style>
+</head>
+<boby>
+  <div class="topnav">
+    <a href="./about.html">About</a>
+    <a href="./blog.html">Blog</a>
+    <a href="./index.html">Home</a>
+  </div>
+
+<div class="row">
+  <div class="column">
+    <h2 style="text-align: center;">Learning</h2>
+    <p><a href='./blog/task1.html' style="font-size:smaller">Task 1</a> -- The HTTP Protocol.</p>
+    <p><a href='./blog/task2.html' style="font-size:smaller">Task 2</a> -- Proxy Server.</p>
+    <p><a href='./blog/task3.html' style="font-size:smaller">Task 3</a> -- Basic Linux Commands.</p>
+    <p><a href='./blog/task4.html' style="font-size:smaller">Task 4</a> -- SQL Injection.</p>
+    <p><a href='./blog/task5.html' style="font-size:smaller">Task 5</a> -- Cross Site Scripting - XSS.</p>
+  </div>
+  <div class="column">
+    <h2 style="text-align: center;">School task</h2>
+    <p><p><a href='./blog/schooltask1.html' style="font-size:smaller">Task 1</a> -- Arithmetic with large integers.</p>
+    <p><p><a href='./blog/schooltask2.html' style="font-size:smaller">Task 2</a> -- RSA Algorithm in Cryptography.</p>
+  </div>
+</div>
+
+</boby>
